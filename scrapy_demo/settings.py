@@ -53,6 +53,7 @@ ROBOTSTXT_OBEY = True
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
 #    "advancedcrawler.middlewares.AdvancedcrawlerDownloaderMiddleware": 543,
+     'scrapeops_scrapy.extension.ScrapeOpsMonitor': 500, 
 #}
 
 # Enable or disable extensions
@@ -97,4 +98,6 @@ FEED_EXPORT_ENCODING = "utf-8"
 DOWNLOAD_HANDLERS = {
     "http": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
     "https": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
+    'scrapeops_scrapy.middleware.retry.RetryMiddleware': 550,
+    'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
 }
