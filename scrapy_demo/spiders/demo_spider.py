@@ -70,7 +70,7 @@ logger = logging.getLogger(__name__)
 
 
 
-class SearchEngineSpider(CrawlSpider):
+class DemoSpider(CrawlSpider):
     name = 'myspider'
     allowed_domains = ['www.pcdl.co']
     start_urls = ['https://www.pcdl.co/']
@@ -86,7 +86,7 @@ class SearchEngineSpider(CrawlSpider):
     )
 
     def __init__(self, *args, **kwargs):
-        super(SearchEngineSpider, self).__init__(*args, **kwargs)
+        super(DemoSpider, self).__init__(*args, **kwargs)
         self.visited_urls = set()
         self.rake = Rake()  # Initialize Rake for keyword extraction
         self.nlp = spacy.load("en_core_web_sm")  # Load spaCy model for NER
@@ -884,5 +884,5 @@ if __name__ == "__main__":
         'PLAYWRIGHT_BROWSER_PATH': '/home/genie/.cache/ms-playwright/chromium-1105/chrome-linux/chrome',
         'PLAYWRIGHT_DOWNLOADS_PATH': '/home/genie/python/WORKSHOP/myproject',
     })
-    process.crawl(SearchEngineSpider)
+    process.crawl(DemoSpider)
     process.start()
